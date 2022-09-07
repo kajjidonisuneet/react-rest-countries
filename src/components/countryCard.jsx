@@ -1,20 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const CountryCard = (props) => {
-  console.log(props);
-  const {capital, flag, name, population, region } = props.countryData
-  console.log(capital, flag, name, population, region)
+  const {
+    capital,
+    flag,
+    name,
+    population,
+    region,
+    alpha3Code: code,
+  } = props.countryData;
+  const options = ["one", "two", "three"];
+  const defaultOption = options[0];
   return (
-    <div className="m-10 max-w-xs rounded overflow-hidden shadow-lg">
-      <a href="#">
-        <img className="w-full" src={flag} alt="" />
+    <div className=" max-w-xs rounded-md overflow-hidden shadow-lg">
+      <Link to={"/" + code}>
+        <img className="w-full h-48 object-cover " src={flag} alt="" />
         <div className="px-6 py-4">
           <p>{name}</p>
-          <p>Population: {population}</p>
+          <p>
+            Population: {population ? population.toLocaleString("en-US") : null}
+          </p>
           <p>Region: {region}</p>
           <p>Capital: {capital}</p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
