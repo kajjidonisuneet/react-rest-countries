@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import CountryCard from "./countryCard";
 import axios from "axios";
 import Dropdown from "../common/dropdown";
+import SearchBox from "./searchBox";
 
 const baseUrl = "https://restcountries.com/v2/region/asia";
 const baseUrl2 = "https://restcountries.com/v2/region/";
+const baseUrl3 = "https://restcountries.com/v2/name/";
 
 class CountryCollection extends Component {
   options = [
     {
       label: "Filter by Region",
-      value: "none",
+      value: "DEFAULT",
       disabled: true,
-      selected: true,
       hidden: true,
     },
     { label: "Africa", value: "africa" },
@@ -24,6 +25,7 @@ class CountryCollection extends Component {
 
   state = {
     countries: [],
+    searchQuery: "",
   };
 
   async componentDidMount() {
@@ -41,11 +43,31 @@ class CountryCollection extends Component {
     }
   };
 
+  updateSearchQuery = async (event) => {
+    const searchQuery = event.target.value;
+    this.setState({ searchQuery });
+  };
+
+  getSearchData = async () => {
+    try {
+      const { data: countries } = await axios.get(baseUrl3 + this.state.searchQuery);
+      this.setState({ countries });
+    } catch (error) {
+      if (error.response && error.response.status === 404)
+        alert("No Movies. Please try other names")
+    }
+  };
+
   render() {
     const { countries } = this.state;
     return (
       <React.Fragment>
         <div>
+          <SearchBox
+            value={this.state.searchQuery}
+            onChange={this.updateSearchQuery}
+            onKeyDown={this.getSearchData}
+          />
           <Dropdown
             options={this.options}
             name="selectedRegion"
