@@ -70,7 +70,7 @@ class CountryCollection extends Component {
     const { countries } = this.state;
     return (
       <React.Fragment>
-        <div>
+        <div className="md:flex md:mx-10 md:justify-between">
           <SearchBox
             value={this.state.searchQuery}
             onChange={this.updateSearchQuery}
@@ -84,7 +84,7 @@ class CountryCollection extends Component {
         </div>
         <div className="flex flex-col items-center">
           {this.state.loading && (
-            <div>
+            <div >
               <MagnifyingGlass
                 visible={true}
                 height="80"
@@ -97,8 +97,8 @@ class CountryCollection extends Component {
               />
             </div>
           )}
-          {!this.state.cardsToDisplay && <div>No Data</div>}
-          <div className="">
+          {!this.state.cardsToDisplay && <div>No Data to Display</div>}
+          <div className="md:grid md:grid-cols-4 md:gap-x-36 md:gap-y-16 md:p-10">
             {countries.map((c) => (
               <CountryCard countryData={c} key={c.alpha3Code} />
             ))}

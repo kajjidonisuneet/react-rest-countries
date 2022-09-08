@@ -15,12 +15,12 @@ const CountryCard = (props) => {
       <Link to={"/" + code}>
         <img className="w-full h-48 object-cover " src={flag} alt="" />
         <div className="px-6 pt-4 pb-10">
-          <p className="text-2xl font-extrabold my-5">{name}</p>
-          <p className='text-lg'>
+          <p className="text-2xl md:text-3xl font-extrabold my-5">{name}</p>
+          <p className='text-lg md:text-xl'>
             <span className="font-semibold">Population:</span> {population ? population.toLocaleString("en-US") : null}
           </p>
-          <p className='text-lg'><span className="font-semibold">Region:</span> {region}</p>
-          <p className='text-lg'><span className="font-semibold">Capital:</span> {capital}</p>
+          <p className='text-lg md:text-xl'><span className="font-semibold">Region:</span> {region}</p>
+          <p className='text-lg md:text-xl'><span className="font-semibold">Capital:</span> {capital}</p>
         </div>
       </Link>
     </div>

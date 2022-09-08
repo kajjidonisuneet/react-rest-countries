@@ -9,7 +9,7 @@ const SearchBox = ({ value, onChange, onKeyDown }) => {
       <input
         type="text"
         name="query"
-        className="mx-2 "
+        className="mx-2 md:text-xl md:font-semibold"
         placeholder="Search for a country..."
         value={value}
         onChange={onChange}

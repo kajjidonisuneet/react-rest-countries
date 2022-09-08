@@ -21,17 +21,17 @@ const CountryDetails = () => {
   }, [countryCode]);
 
   return (
-    <React.Fragment>
+    <div className="md:mx-10">
       <BackButton />
 
-      <div className="">
+      <div className="md:grid md:gap-20 md:grid-cols-2 md:grid-rows-1">
         <div className="p-6">
           <img src={countryData.flag} alt="" />
         </div>
         <div className="p-6">
-          <p className="text-3xl font-extrabold mb-6">{countryData.name}</p>
-          <div className="">
-            <div className="text-lg leading-loose mb-6">
+          <p className="text-3xl md:text-5xl font-extrabold mb-6">{countryData.name}</p>
+          <div className="md:grid md:gap-20 md:grid-cols-2 md:grid-rows-1">
+            <div className="text-lg leading-loose mb-6 md:text-xl md:leading-10">
               <p>
                 <span className="font-semibold">Native Name: </span>
                 <span>{countryData.nativeName}</span>
@@ -57,7 +57,7 @@ const CountryDetails = () => {
                 <span>{countryData.capital}</span>
               </p>
             </div>
-            <div className="text-lg leading-loose mb-6">
+            <div className="text-lg leading-loose mb-6 md:text-xl md:leading-10">
               <p>
                 <span className="font-semibold">Top Level Domain: </span>
                 <span>
@@ -89,8 +89,8 @@ const CountryDetails = () => {
             </div>
           </div>
           <div>
-            <span className="font-semibold text-lg"> Border Countries:</span>
-            <div>
+            <span className="font-semibold text-lg md:text-xl md:leading-10"> Border Countries:</span>
+            <div className="md:inline-block">
               {countryData.borders
                 ? countryData.borders.map((d) => (
                     <CountryLinkButton key={d} code={d} />
@@ -100,10 +100,10 @@ const CountryDetails = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
 export default CountryDetails;
 
-// grid gap-4 grid-cols-2 grid-rows-1
+// 
