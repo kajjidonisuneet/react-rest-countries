@@ -4,10 +4,9 @@ import axios from "axios";
 import Dropdown from "../common/dropdown";
 import SearchBox from "./searchBox";
 import { MagnifyingGlass } from "react-loader-spinner";
+import config from "../config.json";
 
-const baseUrl = "https://restcountries.com/v2/region/asia";
-const baseUrl2 = "https://restcountries.com/v2/region/";
-const baseUrl3 = "https://restcountries.com/v2/name/";
+const apiUrl = config.apiUrl;
 
 class CountryCollection extends Component {
   options = [
@@ -32,7 +31,7 @@ class CountryCollection extends Component {
   };
 
   async componentDidMount() {
-    const { data: countries } = await axios.get(baseUrl);
+    const { data: countries } = await axios.get(apiUrl + "region/asia");
     this.setState({ countries, loading: false });
   }
 
@@ -40,7 +39,9 @@ class CountryCollection extends Component {
     try {
       this.setState({ loading: true, cardsToDisplay: true });
       const selectedRegion = e.target.value;
-      const { data: countries } = await axios.get(baseUrl2 + selectedRegion);
+      const { data: countries } = await axios.get(
+        apiUrl + "region/" + selectedRegion
+      );
       this.setState({ countries, loading: false });
     } catch (error) {
       this.setState({ cardsToDisplay: false });
@@ -56,7 +57,7 @@ class CountryCollection extends Component {
     try {
       this.setState({ loading: true, countries: [], cardsToDisplay: true });
       const { data: countries } = await axios.get(
-        baseUrl3 + this.state.searchQuery
+        apiUrl + "name/" + this.state.searchQuery
       );
       this.setState({ countries, loading: false, cardsToDisplay: true });
     } catch (error) {
@@ -97,7 +98,7 @@ class CountryCollection extends Component {
             </div>
           )}
           {!this.state.cardsToDisplay && <div>No Data</div>}
-          <div className=''>
+          <div className="">
             {countries.map((c) => (
               <CountryCard countryData={c} key={c.alpha3Code} />
             ))}
@@ -109,6 +110,5 @@ class CountryCollection extends Component {
 }
 
 export default CountryCollection;
-
 
 // className="grid grid-cols-4 gap-4 p-10"

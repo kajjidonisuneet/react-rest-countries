@@ -3,8 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import CountryLinkButton from "./countryLinkButton";
 import BackButton from "../common/backButton";
+import config from '../config.json'
 
-const baseUrl = "https://restcountries.com/v2/alpha/"; //add a config for base url
+const apiUrl = config.apiUrl
 
 const CountryDetails = () => {
   const [countryData, setCountryData] = useState({});
@@ -12,7 +13,7 @@ const CountryDetails = () => {
 
   useEffect(() => {
     async function getData() {
-      const { data } = await axios.get(baseUrl + countryCode);
+      const { data } = await axios.get(apiUrl + "alpha/" + countryCode);
       setCountryData(data);
     }
 
