@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import CountryLinkButton from "./countryLinkButton";
 import BackButton from "../common/backButton";
-import Dropdown from "../common/dropdown";
 
 const baseUrl = "https://restcountries.com/v2/alpha/"; //add a config for base url
 
@@ -22,21 +21,22 @@ const CountryDetails = () => {
 
   return (
     <React.Fragment>
-      <BackButton/>
-      
-      <div className="grid gap-4 grid-cols-2 grid-rows-1">
-        <div>
+      <BackButton />
+
+      <div className="">
+        <div className="p-6">
           <img src={countryData.flag} alt="" />
         </div>
-        <div>
-          <p>{countryData.name}</p>
-          <div className="grid gap-4 grid-cols-2 grid-rows-1">
-            <div>
+        <div className="p-6">
+          <p className="text-3xl font-extrabold mb-6">{countryData.name}</p>
+          <div className="">
+            <div className="text-lg leading-loose mb-6">
               <p>
-                Native Name: <span>{countryData.nativeName}</span>
+                <span className="font-semibold">Native Name: </span>
+                <span>{countryData.nativeName}</span>
               </p>
               <p>
-                Population: 
+                <span className="font-semibold">Population:</span>
                 <span>
                   {countryData.population
                     ? countryData.population.toLocaleString("en-US")
@@ -44,18 +44,21 @@ const CountryDetails = () => {
                 </span>
               </p>
               <p>
-                Region: <span>{countryData.region}</span>
+                <span className="font-semibold">Region:</span>{" "}
+                <span>{countryData.region}</span>
               </p>
               <p>
-                Sub Region: <span>{countryData.subregion}</span>
+                <span className="font-semibold">Sub Region:</span>{" "}
+                <span>{countryData.subregion}</span>
               </p>
               <p>
-                Capital: <span>{countryData.capital}</span>
+                <span className="font-semibold">Capital:</span>{" "}
+                <span>{countryData.capital}</span>
               </p>
             </div>
-            <div>
+            <div className="text-lg leading-loose mb-6">
               <p>
-                Top Level Domain:
+                <span className="font-semibold">Top Level Domain: </span>
                 <span>
                   {countryData.topLevelDomain
                     ? countryData.topLevelDomain.map((d) => (
@@ -65,7 +68,7 @@ const CountryDetails = () => {
                 </span>
               </p>
               <p>
-                Currencies:
+                <span className="font-semibold">Currencies:</span>
                 <span>
                   {countryData.currencies
                     ? countryData.currencies.map((d) => (
@@ -75,7 +78,7 @@ const CountryDetails = () => {
                 </span>
               </p>
               <p>
-                Languages:
+                <span className="font-semibold"> Languages:</span>
                 <span>
                   {countryData.languages
                     ? countryData.languages.map((d) => d.name).join(", ")
@@ -85,12 +88,14 @@ const CountryDetails = () => {
             </div>
           </div>
           <div>
-            Border Countries:
-            {countryData.borders
-              ? countryData.borders.map((d) => (
-                  <CountryLinkButton key={d} code={d} />
-                ))
-              : null}
+            <span className="font-semibold text-lg"> Border Countries:</span>
+            <div>
+              {countryData.borders
+                ? countryData.borders.map((d) => (
+                    <CountryLinkButton key={d} code={d} />
+                  ))
+                : null}
+            </div>
           </div>
         </div>
       </div>
@@ -99,3 +104,5 @@ const CountryDetails = () => {
 };
 
 export default CountryDetails;
+
+// grid gap-4 grid-cols-2 grid-rows-1

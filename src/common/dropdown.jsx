@@ -2,9 +2,9 @@ import React from "react";
 
 const Dropdown = ({ name, options, onChange }) => {
   return (
-    <div className="relative w-full lg:max-w-sm">
+    <div className="">
       <select
-        className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+        className="p-5 bg-white shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] m-5 rounded-lg"
         name={name}
         onChange={onChange}
         defaultValue={'DEFAULT'}

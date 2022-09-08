@@ -18,7 +18,7 @@ const CountryLinkButton = ({ code }) => {
 
   return (
     <Link
-      className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-2 inline-block"
+      className=" bg-white shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] m-2 rounded-lg py-2 px-4 m-2 inline-block"
       to={"/" + code}
     >
       {countryName}

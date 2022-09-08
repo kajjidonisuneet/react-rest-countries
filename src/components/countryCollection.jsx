@@ -33,7 +33,7 @@ class CountryCollection extends Component {
 
   async componentDidMount() {
     const { data: countries } = await axios.get(baseUrl);
-    this.setState({ countries, loading: false});
+    this.setState({ countries, loading: false });
   }
 
   handleRegionChange = async (e) => {
@@ -41,7 +41,7 @@ class CountryCollection extends Component {
       this.setState({ loading: true, cardsToDisplay: true });
       const selectedRegion = e.target.value;
       const { data: countries } = await axios.get(baseUrl2 + selectedRegion);
-      this.setState({ countries, loading: false});
+      this.setState({ countries, loading: false });
     } catch (error) {
       this.setState({ cardsToDisplay: false });
     }
@@ -81,25 +81,27 @@ class CountryCollection extends Component {
             onChange={this.handleRegionChange}
           />
         </div>
-        {this.state.loading && (
-          <div>
-            <MagnifyingGlass
-              visible={true}
-              height="80"
-              width="80"
-              ariaLabel="MagnifyingGlass-loading"
-              wrapperStyle={{}}
-              wrapperClass="MagnifyingGlass-wrapper"
-              glassColor="#c0efff"
-              color="#e15b64"
-            />
+        <div className="flex flex-col items-center">
+          {this.state.loading && (
+            <div>
+              <MagnifyingGlass
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="MagnifyingGlass-loading"
+                wrapperStyle={{}}
+                wrapperClass="MagnifyingGlass-wrapper"
+                glassColor="#c0efff"
+                color="#e15b64"
+              />
+            </div>
+          )}
+          {!this.state.cardsToDisplay && <div>No Data</div>}
+          <div className=''>
+            {countries.map((c) => (
+              <CountryCard countryData={c} key={c.alpha3Code} />
+            ))}
           </div>
-        )}
-        {!this.state.cardsToDisplay && <div>No Data</div>}
-        <div className="grid grid-cols-4 gap-4 p-10">
-          {countries.map((c) => (
-            <CountryCard countryData={c} key={c.alpha3Code} />
-          ))}
         </div>
       </React.Fragment>
     );
@@ -107,3 +109,6 @@ class CountryCollection extends Component {
 }
 
 export default CountryCollection;
+
+
+// className="grid grid-cols-4 gap-4 p-10"

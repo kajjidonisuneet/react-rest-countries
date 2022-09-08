@@ -10,19 +10,17 @@ const CountryCard = (props) => {
     region,
     alpha3Code: code,
   } = props.countryData;
-  const options = ["one", "two", "three"];
-  const defaultOption = options[0];
   return (
-    <div className=" max-w-xs rounded-md overflow-hidden shadow-lg">
+    <div className=" max-w-[24rem] rounded-md overflow-hidden shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] mb-10">
       <Link to={"/" + code}>
         <img className="w-full h-48 object-cover " src={flag} alt="" />
-        <div className="px-6 py-4">
-          <p>{name}</p>
-          <p>
-            Population: {population ? population.toLocaleString("en-US") : null}
+        <div className="px-6 pt-4 pb-10">
+          <p className="text-2xl font-extrabold my-5">{name}</p>
+          <p className='text-lg'>
+            <span className="font-semibold">Population:</span> {population ? population.toLocaleString("en-US") : null}
           </p>
-          <p>Region: {region}</p>
-          <p>Capital: {capital}</p>
+          <p className='text-lg'><span className="font-semibold">Region:</span> {region}</p>
+          <p className='text-lg'><span className="font-semibold">Capital:</span> {capital}</p>
         </div>
       </Link>
     </div>
