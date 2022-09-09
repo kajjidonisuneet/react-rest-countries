@@ -28,8 +28,8 @@ const CountryDetails = () => {
         <div className="p-6">
           <img src={countryData.flag} alt="" />
         </div>
-        <div className="p-6">
-          <p className="text-3xl md:text-5xl font-extrabold mb-6">{countryData.name}</p>
+        <div className="p-6 dark:text-white">
+          <p className="text-3xl md:text-5xl font-extrabold mb-6 ">{countryData.name}</p>
           <div className="md:grid md:gap-20 md:grid-cols-2 md:grid-rows-1">
             <div className="text-lg leading-loose mb-6 md:text-xl md:leading-10">
               <p>

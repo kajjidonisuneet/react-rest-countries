@@ -8,8 +8,8 @@ import Header from "./components/header";
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Header/>
+      <div className="bg-veryLightGray dark:bg-veryDarkBlueDM">
+        <Header />
         <BrowserRouter>
           <React.Fragment>
             <Routes>
@@ -18,7 +18,7 @@ class App extends Component {
             </Routes>
           </React.Fragment>
         </BrowserRouter>
-      </React.Fragment>
+      </div>
     );
   }
 }
