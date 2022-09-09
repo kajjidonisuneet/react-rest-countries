@@ -11,7 +11,7 @@ const CountryCard = (props) => {
     alpha3Code: code,
   } = props.countryData;
   return (
-    <div className=" max-w-[24rem] rounded-md overflow-hidden shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] mb-10">
+    <div className=" max-w-[24rem] rounded-md overflow-hidden shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] mb-10 bg-white">
       <Link to={"/" + code}>
         <img className="w-full h-48 object-cover " src={flag} alt="" />
         <div className="px-6 pt-4 pb-10">

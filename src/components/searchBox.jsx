@@ -4,7 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBox = ({ value, onChange, onKeyDown }) => {
   return (
-    <div className="p-5 shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] m-5 rounded-lg">
+    <div className="p-5 shadow-[0_0_10px_2px_rgba(0,0,0,0.1)] m-5 rounded-lg bg-white">
       <FontAwesomeIcon icon={faMagnifyingGlass} className="px-2" />
       <input
         type="text"
